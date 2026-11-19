@@ -7,7 +7,7 @@ declare(strict_types=1);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#10233f">
-    <title>Connexion | Riposte MVE</title>
+    <title>Connexion | EPI DATA</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="assets/css/app.css" rel="stylesheet">
@@ -16,7 +16,7 @@ declare(strict_types=1);
     <main class="login-card">
         <a class="brand login-brand" href="login.php">
             <span class="brand-mark"><i class="bi bi-heart-pulse-fill"></i></span>
-            <span><strong>Riposte MVE</strong><small>Surveillance & action</small></span>
+            <span><strong>EPI DATA</strong><small>Données épidémiologiques</small></span>
         </a>
         <div class="eyebrow">ESPACE SÉCURISÉ</div>
         <h1>Connexion</h1>

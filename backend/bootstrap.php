@@ -97,6 +97,25 @@ function optionalString(array $input, string $key, int $maxLength): ?string
     return trim($value);
 }
 
+function separatedNamesValue(array $input, string $key, int $targetCount, int $maxLength = 10000): ?string
+{
+    $value = optionalString($input, $key, $maxLength);
+    if ($targetCount === 0) {
+        return null;
+    }
+    if ($value === null) {
+        apiError(422, 'Les noms des lieux ciblés sont obligatoires lorsque le nombre ciblé est supérieur à zéro.');
+    }
+    $names = array_values(array_filter(
+        array_map('trim', explode(';', $value)),
+        static fn (string $name): bool => $name !== ''
+    ));
+    if (count($names) !== $targetCount) {
+        apiError(422, 'Le nombre de noms saisis doit correspondre au nombre ciblé. Utilisez un point-virgule (;) entre chaque nom.');
+    }
+    return implode('; ', $names);
+}
+
 function requiredId(array $input, string $key): int
 {
     $value = filter_var($input[$key] ?? null, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]);
@@ -176,7 +195,7 @@ function currentUser(PDO $db): array
     }
 
     $statement = $db->prepare(
-        'SELECT u.id, u.zone_id, u.nom, u.email, u.role, u.active, z.active AS zone_active
+        'SELECT u.id, u.zone_id, z.nom AS zone_nom, u.nom, u.email, u.role, u.active, z.active AS zone_active
          FROM users u LEFT JOIN zones_sante z ON z.id = u.zone_id
          WHERE u.id = ?'
     );

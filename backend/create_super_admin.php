@@ -13,8 +13,8 @@ $email = 'admin@gmail.com';
 $password = getenv('MVE_ADMIN_PASSWORD');
 
 if (!is_string($name) || trim($name) === ''
-    || !is_string($password) || strlen($password) < 12) {
-    fwrite(STDERR, "Définissez MVE_ADMIN_PASSWORD (12 caractères minimum), puis relancez ce script en CLI. L'adresse du Super Admin est admin@gmail.com.\n");
+    || !is_string($password) || strlen($password) < 4) {
+    fwrite(STDERR, "Définissez MVE_ADMIN_PASSWORD (4 caractères minimum), puis relancez ce script en CLI. L'adresse du Super Admin est admin@gmail.com.\n");
     exit(1);
 }
 

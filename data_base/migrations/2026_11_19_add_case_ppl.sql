@@ -1,0 +1,2 @@
+ALTER TABLE cas_mve
+    ADD COLUMN ppl_infecte TINYINT(1) NOT NULL DEFAULT 0 AFTER sexe;

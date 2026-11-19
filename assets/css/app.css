@@ -52,7 +52,15 @@ a { text-decoration: none; }
 .today-label { font-size: 11px; }
 .today-label i { margin-right: 5px; }
 .notification-button { font-size: 17px; }
-.notification-button span { background: var(--red); border: 2px solid #fff; border-radius: 50%; height: 8px; position: absolute; right: 6px; top: 6px; width: 8px; }
+.notification-wrapper { position: relative; }
+.notification-button span { align-items: center; background: var(--red); border: 2px solid #fff; border-radius: 12px; color: #fff; display: inline-flex; font-size: 8px; font-weight: 700; height: 16px; justify-content: center; min-width: 16px; padding: 0 3px; position: absolute; right: 0; top: 0; width: auto; }
+.notification-panel { background: #fff; border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 12px 30px #10233f20; max-height: 360px; overflow-y: auto; padding: 14px; position: absolute; right: -40px; top: 42px; width: min(360px, calc(100vw - 32px)); z-index: 1100; }
+.notification-panel > strong { color: var(--ink); display: block; font-size: 12px; margin-bottom: 10px; }
+.notification-item { background: #f7f9fc; border: 1px solid var(--line); border-radius: 6px; color: var(--ink); cursor: pointer; display: block; margin-top: 7px; padding: 10px; text-align: left; width: 100%; }
+.notification-item:hover { background: #edf4ff; }
+.notification-item strong, .notification-item span { display: block; }
+.notification-item strong { font-size: 11px; }
+.notification-item span, .notification-empty { color: var(--muted); font-size: 10px; margin: 4px 0 0; }
 .topbar-divider { background: var(--line); height: 25px; width: 1px; }
 .avatar-small { height: 30px; width: 30px; }
 .mobile-menu { display: none; }
@@ -62,7 +70,11 @@ a { text-decoration: none; }
 h1 { color: #192b42; font-size: 24px; font-weight: 700; letter-spacing: -.65px; margin: 0; }
 .page-heading p { color: #8190a2; font-size: 12px; margin: 7px 0 0; }
 .heading-actions { align-items: flex-end; display: flex; gap: 9px; }
+.report-export-controls { align-items: center; display: flex; flex-wrap: wrap; gap: 5px; }
+.report-export-controls .form-control { font-size: 10px; min-width: 125px; }
+.report-export-controls .btn { font-size: 10px; white-space: nowrap; }
 .filter-label { color: #748296; font-size: 10px; margin-bottom: 10px; }
+.zone-scope-badge { align-items: center; background: #edf4ff; border: 1px solid #dce8f8; border-radius: 20px; color: #356bb1; display: inline-flex; font-size: 9px; font-weight: 650; height: 36px; padding: 0 10px; white-space: nowrap; }
 .zone-filter { border-color: #e0e6ee; border-radius: 6px; color: #35465c; font-size: 11px; height: 36px; width: 164px; }
 .area-filter { width: 174px; }
 .btn-primary { background: #2868c8; border-color: #2868c8; }
@@ -159,6 +171,8 @@ h1 { color: #192b42; font-size: 24px; font-weight: 700; letter-spacing: -.65px; 
 .admin-panel { display: grid; gap: 15px; }
 .admin-form-card, .admin-table-card { padding: 18px; }
 .admin-inline-form { align-items: end; display: grid; gap: 12px; grid-template-columns: repeat(3, minmax(0, 1fr)) auto; margin-top: 16px; }
+.zone-inline-form { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.zone-inline-form .action-button { grid-column: 1 / -1; justify-self: start; }
 .admin-inline-form label { color: #68798e; display: grid; font-size: 10px; font-weight: 600; gap: 6px; }
 .admin-inline-form .form-control, .admin-inline-form .form-select { border-color: #e0e6ee; border-radius: 6px; color: #35465c; font-size: 11px; height: 36px; }
 .admin-inline-form .action-button { margin: 0; }
@@ -170,6 +184,21 @@ h1 { color: #192b42; font-size: 24px; font-weight: 700; letter-spacing: -.65px; 
 .refresh-button i { margin-right: 4px; }
 .toggle-button { font-size: 9px; white-space: nowrap; }
 .muted-action { color: #98a4b2; font-size: 9px; }
+.crud-actions { align-items: center; display: flex; flex-wrap: wrap; gap: 5px; }
+.crud-actions .btn { font-size: 9px; }
+.resource-form-grid { display: grid; gap: 13px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.resource-field { color: #68798e; display: grid; font-size: 10px; font-weight: 600; gap: 6px; }
+.resource-field .form-control, .resource-field .form-select { border-color: #e0e6ee; border-radius: 6px; color: #35465c; font-size: 11px; }
+.resource-field .form-control, .resource-field .form-select { min-height: 37px; }
+.resource-field textarea.form-control { min-height: 75px; }
+.resource-field-wide { grid-column: 1 / -1; }
+.resource-checkbox { align-items: center; display: flex; gap: 8px; padding-top: 23px; }
+.resource-checkbox input { accent-color: #2868c8; height: 15px; width: 15px; }
+.resource-radio { border: 0; margin: 0; padding: 0; }
+.resource-radio legend { color: #68798e; font-size: 10px; font-weight: 600; margin-bottom: 6px; }
+.resource-radio-options { display: flex; gap: 16px; }
+.resource-radio-options label { align-items: center; color: #68798e; display: inline-flex; font-size: 11px; gap: 6px; }
+.resource-radio-options input { accent-color: #2868c8; }
 .empty-row { color: #95a1af !important; padding: 24px !important; text-align: center; }
 .login-page { align-items: center; background: radial-gradient(ellipse at 15% 12%, #264a70 0, transparent 38%), var(--navy); display: flex; justify-content: center; min-height: 100vh; padding: 24px; }
 .login-card { background: #fff; border: 1px solid #ffffff50; border-radius: 12px; box-shadow: 0 25px 80px #06142655; max-width: 430px; padding: 34px 38px 26px; width: 100%; }
@@ -197,7 +226,7 @@ h1 { color: #192b42; font-size: 24px; font-weight: 700; letter-spacing: -.65px; 
     .page-container { padding-left: 25px; padding-right: 25px; }
     .topbar { padding: 0 25px; }
     .chart-card { height: 300px; }
-    .admin-inline-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .admin-inline-form, .zone-inline-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .user-inline-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 767px) {
@@ -226,8 +255,9 @@ h1 { color: #192b42; font-size: 24px; font-weight: 700; letter-spacing: -.65px; 
     .table-heading .text-link { white-space: nowrap; }
     .page-footer { gap: 10px; }
     .login-card { padding: 28px 22px 22px; }
-    .admin-inline-form, .user-inline-form { grid-template-columns: 1fr; }
+    .admin-inline-form, .user-inline-form, .zone-inline-form { grid-template-columns: 1fr; }
     .admin-inline-form .action-button, .user-inline-form .action-button { justify-self: stretch; }
+    .resource-form-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 390px) {
     .filter-label { flex-basis: 100%; }
